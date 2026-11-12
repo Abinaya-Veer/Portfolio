@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abinaya Veeraiyan | Entry-Level Python Developer</title>
+<meta name="description" content="Portfolio of Abinaya Veeraiyan, a Computer Science Engineering graduate skilled in Python, SQL and web technologies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+/* ========== 1. DESIGN TOKENS (edit colours here) ========== */
+:root{
+  --bg:#FFFFFF;--bg-alt:#F4F5FB;--card:#FFFFFF;--ink:#0B1437;--muted:#505A7C;--line:#E2E5F2;
+  --navy:#0B1437;--navy-2:#16225A;--purple:#7B5CF0;--purple-soft:#EEEAFE;--on-navy:#FFFFFF;--on-navy-muted:#B9C0E2;
+  --shadow:0 10px 30px rgba(11,20,55,.08);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1230;--bg-alt:#0F1840;--card:#141E4D;--ink:#EEF0FB;--muted:#A8B0D6;--line:#27336B;--purple:#9C86FF;--purple-soft:#241F55;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#0B1230;--bg-alt:#0F1840;--card:#141E4D;--ink:#EEF0FB;--muted:#A8B0D6;--line:#27336B;--purple:#9C86FF;--purple-soft:#241F55;--shadow:0 10px 30px rgba(0,0,0,.35)}
+
+/* ========== 2. BASE ========== */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:60}
+h1,h2,h3{font-family:Sora,Inter,system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--purple);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+section.alt{background:var(--bg-alt)}
+.eyebrow{color:var(--purple);font:600 14px Sora,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+h2{font-size:clamp(28px,4.4vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+.lede{color:var(--muted);max-width:40em;margin:0 0 40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--purple);cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(123,92,240,.35)}
+.btn.primary{background:var(--purple);color:#fff}
+.btn.ghost{color:var(--on-navy);border-color:rgba(255,255,255,.4)}
+.btn.ghost:hover{background:rgba(255,255,255,.1)}
+
+/* ========== 3. NAVIGATION ========== */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);color:var(--on-navy)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:700 19px Sora,sans-serif;text-decoration:none}
+.logo span{color:var(--purple)}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:15px;color:var(--on-navy-muted);transition:color .2s,background .2s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.1)}
+.menu{display:none;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:8px;padding:8px 12px;cursor:pointer;font:inherit}
+
+/* ========== 4. HOME ========== */
+#home{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:var(--on-navy);padding:96px 0 104px;position:relative;overflow:hidden}
+#home::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(123,92,240,.45),transparent 70%);pointer-events:none}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative;z-index:1}
+.hello{color:var(--on-navy-muted);margin:0 0 8px}
+#home h1{font-size:clamp(40px,7vw,70px);font-weight:700;letter-spacing:-.03em}
+.role{font:600 clamp(18px,2.6vw,24px) Sora,sans-serif;color:#C9BDFF;margin:14px 0 18px}
+.intro{color:var(--on-navy-muted);max-width:34em;margin:0 0 30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.code{background:rgba(7,12,36,.7);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px;font:14px/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;box-shadow:0 20px 50px rgba(0,0,0,.35);overflow-x:auto}
+.code .dots{display:flex;gap:7px;margin-bottom:12px}.code .dots i{width:11px;height:11px;border-radius:50%;background:#3A4580}
+.k{color:#C9BDFF}.s{color:#8FE0C0}.c{color:#7F8BC4}.p{color:#E6E9FA}
+.code pre{margin:0;white-space:pre}
+
+/* ========== 5. ABOUT ========== */
+.about{display:grid;grid-template-columns:1.5fr 1fr;gap:40px}
+.about p{margin:0 0 16px;max-width:38em}
+.facts{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow);align-self:start}
+.facts div+div{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.facts dt{font-size:13px;color:var(--purple);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.facts dd{margin:2px 0 0;font-weight:500}
+.facts dl{margin:0}
+
+/* ========== 6. SKILLS ========== */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow);transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-5px);border-color:var(--purple)}
+.card h3{font-size:19px;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tags li{background:var(--purple-soft);color:var(--ink);font-size:14px;font-weight:500;padding:5px 12px;border-radius:99px}
+
+/* ========== 7. EXPERIENCE ========== */
+.tl{list-style:none;margin:0;padding:0 0 0 30px;border-left:2px solid var(--line)}
+.tl li{position:relative;padding-bottom:30px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-38px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--purple);border:3px solid var(--bg)}
+.alt .tl li::before{border-color:var(--bg-alt)}
+.tl .when{display:inline-block;color:var(--purple);font:600 14px Sora,sans-serif;margin-bottom:4px}
+.tl h3{font-size:20px}.tl .org{color:var(--muted);font-weight:500;margin:2px 0 8px}
+.tl p{margin:0;color:var(--muted);max-width:42em}
+
+/* ========== 8. PROJECTS ========== */
+.proj{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.proj .card{display:flex;flex-direction:column;gap:14px;padding:0;overflow:hidden}
+.proj .top{height:8px;background:linear-gradient(90deg,var(--navy-2),var(--purple))}
+.proj .in{padding:24px 26px 28px;display:flex;flex-direction:column;gap:14px;flex:1}
+.proj .tag-label{font:600 12px Sora,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--purple)}
+.proj p{margin:0;color:var(--muted);flex:1}
+
+/* ========== 9. EDUCATION & CERTIFICATIONS ========== */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.item{padding:18px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0;padding-bottom:0}.item:first-of-type{padding-top:0}
+.item b{display:block}.item span{color:var(--muted);font-size:15px}
+.badge{display:inline-block;margin-top:6px;background:var(--purple-soft);color:var(--purple);font-weight:600;font-size:13px;padding:2px 10px;border-radius:99px}
+
+/* ========== 10. CONTACT ========== */
+#contact{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:var(--on-navy)}
+#contact .lede{color:var(--on-navy-muted)}
+.contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.contacts a{display:block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:20px 22px;text-decoration:none;transition:transform .2s,background .2s;overflow-wrap:anywhere}
+.contacts a:hover{transform:translateY(-4px);background:rgba(255,255,255,.14)}
+.contacts small{display:block;color:#C9BDFF;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:12px;margin-bottom:4px}
+footer{background:#070C24;color:var(--on-navy-muted);padding:24px 0;font-size:15px;text-align:center}
+
+/* ========== 11. ANIMATION & RESPONSIVE ========== */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (max-width:860px){
+  .hero,.about,.two{grid-template-columns:1fr}
+  section{padding:64px 0}#home{padding:64px 0 72px}
+  .menu{display:block}
+  nav{position:absolute;left:0;right:0;top:64px;background:var(--navy);border-top:1px solid rgba(255,255,255,.12);display:none;padding:10px 24px 16px}
+  nav.open{display:block}nav ul{flex-direction:column}
+}
+@media (max-width:480px){.wrap{padding:0 18px}.btn{width:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.card,.btn,.contacts a{transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home">Abinaya<span>.</span></a>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ========== HOME ========== -->
+<section id="home"><div class="wrap hero">
+  <div class="reveal">
+    <p class="hello">Hello, I’m</p>
+    <h1>Abinaya Veeraiyan</h1>
+    <p class="role">Entry-Level Python Developer</p>
+    <p class="intro">Computer Science Engineering graduate with a strong foundation in Python, SQL and web technologies, with experience in software development, web development and UI/UX design. I am looking for a role in an engineering team where I can apply my technical knowledge and problem-solving ability.</p>
+    <div class="btns">
+      <a class="btn primary" id="resume" href="Abinaya_Resume.pdf" download>Download Resume</a>
+      <a class="btn ghost" href="#projects">View Projects</a>
+      <a class="btn ghost" href="#contact">Contact Me</a>
+    </div>
+  </div>
+  <div class="code reveal" aria-hidden="true">
+    <div class="dots"><i></i><i></i><i></i></div>
+<pre><span class="c"># profile.py</span>
+<span class="p">developer</span> = {
+  <span class="s">"name"</span>: <span class="s">"Abinaya Veeraiyan"</span>,
+  <span class="s">"degree"</span>: <span class="s">"B.E. Computer Science"</span>,
+  <span class="s">"languages"</span>: [<span class="s">"Python"</span>, <span class="s">"C"</span>],
+  <span class="s">"database"</span>: <span class="s">"SQL"</span>,
+  <span class="s">"web"</span>: [<span class="s">"HTML5"</span>, <span class="s">"CSS3"</span>, <span class="s">"JS"</span>],
+  <span class="s">"location"</span>: <span class="s">"Bengaluru"</span>,
+}</pre>
+  </div>
+</div></section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about"><div class="wrap about">
+  <div class="reveal">
+    <div class="eyebrow">About me</div>
+    <h2>Building a strong technical foundation</h2>
+    <p>I am a Computer Science Engineering graduate with a strong foundation in Python, SQL and web technologies. I have exposure to software development, web development and UI/UX, along with professional experience in education.</p>
+    <p>I am seeking a role where I can apply my technical knowledge and problem-solving ability, and continue to learn as part of an engineering team.</p>
+  </div>
+  <dl class="facts reveal">
+    <div><dt>Qualification</dt><dd>B.E. Computer Science and Engineering</dd></div>
+    <div><dt>Location</dt><dd>Bengaluru, India</dd></div>
+    <div><dt>Languages</dt><dd>English (professional), Tamil (native)</dd></div>
+  </dl>
+</div></section>
+
+<!-- ========== SKILLS ========== -->
+<section id="skills" class="alt"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Technical skills</div><h2>What I work with</h2><p class="lede">The languages, technologies and tools I have learned and used.</p></div>
+  <div class="grid">
+    <div class="card reveal"><h3>Programming Languages</h3><ul class="tags"><li>Python</li><li>C</li></ul></div>
+    <div class="card reveal"><h3>Web Technologies</h3><ul class="tags"><li>HTML5</li><li>CSS3</li><li>JavaScript</li></ul></div>
+    <div class="card reveal"><h3>Database</h3><ul class="tags"><li>SQL</li></ul></div>
+    <div class="card reveal"><h3>Emerging Technologies</h3><ul class="tags"><li>Generative AI Fundamentals</li><li>Arduino Microcontrollers</li></ul></div>
+  </div>
+</div></section>
+
+<!-- ========== EXPERIENCE ========== -->
+<section id="experience"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Experience</div><h2>Work and internships</h2><p class="lede">Hands-on experience in design, education and web development.</p></div>
+  <ol class="tl">
+    <li class="reveal"><span class="when">2026</span><h3>UI/UX Intern</h3><div class="org">NOVITECH</div><p>Designed responsive, human-centric interface mockups and conducted user research.</p></li>
+    <li class="reveal"><span class="when">2024 – 2026</span><h3>Educator</h3><div class="org">Neelan Matriculation Higher Secondary School</div><p>Taught mathematics and problem-solving concepts to students, breaking down complex quantitative topics into clear, step-by-step logical explanations.</p></li>
+    <li class="reveal"><span class="when">2023</span><h3>Web Development Intern</h3><div class="org">Skill Intern</div><p>Strengthened technical execution in front-end and back-end web environments by building responsive applications and troubleshooting web architecture issues.</p></li>
+  </ol>
+</div></section>
+
+<!-- ========== PROJECTS ========== -->
+<section id="projects" class="alt"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Projects</div><h2>Academic projects</h2><p class="lede">Projects that combine hardware, security and system design.</p></div>
+  <div class="proj">
+    <article class="card reveal"><div class="top"></div><div class="in">
+      <div class="tag-label">IoT · Assistive technology</div><h3>Smart Stick for the Visually Impaired</h3>
+      <p>Developed an IoT-based assistive device that integrates an Arduino microcontroller with ultrasonic sensors to detect obstacles in real time. It gives haptic and audio feedback to improve navigation safety for visually impaired people.</p>
+      <ul class="tags"><li>Arduino</li><li>Ultrasonic sensors</li><li>IoT</li></ul></div></article>
+    <article class="card reveal"><div class="top"></div><div class="in">
+      <div class="tag-label">Blockchain · Security</div><h3>Detection of Fake Social Media Profiles</h3>
+      <p>Designed a blockchain-based system to detect and manage fake social media profiles, using decentralization and traceability to provide tamper-proof verification.</p>
+      <ul class="tags"><li>Blockchain</li><li>Decentralization</li><li>Traceability</li></ul></div></article>
+    <article class="card reveal"><div class="top"></div><div class="in">
+      <div class="tag-label">Authentication · Security</div><h3>Three-Level Password Authentication System</h3>
+      <p>Designed a multi-layer folder access authentication concept that uses three methods (a text-based passphrase, an image-based password and a graphical password) to strengthen access control.</p>
+      <ul class="tags"><li>Text passphrase</li><li>Image password</li><li>Graphical password</li></ul></div></article>
+  </div>
+</div></section>
+
+<!-- ========== EDUCATION ========== -->
+<section id="education"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Education</div><h2>Academic background</h2></div>
+  <div class="card reveal" style="max-width:760px">
+    <div class="item"><b>Bachelor of Engineering, Computer Science and Engineering</b><span>Anjalai Ammal Mahalingam Engineering College · 2024</span><br><span class="badge">87%</span></div>
+    <div class="item"><b>Higher Secondary Certificate (HSC)</b><span>Ukkadai A. Appavoo Thevar Higher Secondary School · 2020</span><br><span class="badge">75%</span></div>
+    <div class="item"><b>Secondary School Leaving Certificate (SSLC)</b><span>Ukkadai A. Viswanatha Thevar Matriculation School · 2018</span><br><span class="badge">91%</span></div>
+  </div>
+</div></section>
+
+<!-- ========== CERTIFICATIONS ========== -->
+<section id="certifications" class="alt"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Certifications and achievements</div><h2>Learning and results</h2></div>
+  <div class="two">
+    <div class="card reveal"><h3>Certifications</h3>
+      <div class="item"><b>Generative AI</b><span>GUVI</span></div>
+      <div class="item"><b>Python</b><span>Great Learning</span></div></div>
+    <div class="card reveal"><h3>Academic achievements</h3>
+      <div class="item"><b>87% in B.E. Computer Science and Engineering</b><span>Anjalai Ammal Mahalingam Engineering College, 2024</span></div>
+      <div class="item"><b>91% in SSLC</b><span>Ukkadai A. Viswanatha Thevar Matriculation School, 2018</span></div></div>
+  </div>
+</div></section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact"><div class="wrap">
+  <div class="reveal"><div class="eyebrow" style="color:#C9BDFF">Contact</div><h2>Let’s connect</h2><p class="lede">I am open to entry-level software, Python and other IT roles. Get in touch and I will reply as soon as I can.</p></div>
+  <div class="contacts reveal" id="contacts">
+    <a href="mailto:abinayaveer96@gmail.com"><small>Email</small>abinayaveer96@gmail.com</a>
+    <a href="https://www.linkedin.com/in/abinaya-veeraiyan-54a87721a" target="_blank" rel="noopener"><small>LinkedIn</small>linkedin.com/in/abinaya-veeraiyan-54a87721a</a>
+    <a href="tel:+919123533475"><small>Phone</small>9123533475</a>
+    <a id="github" href="#" target="_blank" rel="noopener" hidden><small>GitHub</small><span></span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Abinaya Veeraiyan · Bengaluru, India</div></footer>
+
+<script>
+/* ========== SETTINGS (edit these) ========== */
+const CONFIG = {
+  github: "https://github.com/Abinaya-Veer",                       // e.g. "https://github.com/your-username" (the link appears once you add it)
+  resumeFile: "Abinaya_Resume.pdf"  // must match the PDF file name in your repository
+};
+
+/* ========== GITHUB + RESUME LINKS ========== */
+(function(){
+  document.getElementById("resume").setAttribute("href", CONFIG.resumeFile);
+  if(CONFIG.github){
+    const a = document.getElementById("github");
+    a.href = CONFIG.github; a.hidden = false;
+    a.querySelector("span").textContent = CONFIG.github.replace(/^https?:\/\//, "");
+  }
+})();
+
+/* ========== MOBILE MENU ========== */
+const menu = document.getElementById("menu"), nav = document.getElementById("nav");
+menu.addEventListener("click", () => menu.setAttribute("aria-expanded", nav.classList.toggle("open")));
+nav.addEventListener("click", e => { if(e.target.closest("a")){ nav.classList.remove("open"); menu.setAttribute("aria-expanded","false"); }});
+
+/* ========== SCROLL REVEAL ========== */
+const io = new IntersectionObserver(entries => entries.forEach(en => {
+  if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+}), { threshold: .12 });
+document.querySelectorAll(".reveal").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 90 + "ms"; io.observe(el); });
+
+/* ========== ACTIVE NAV LINK ========== */
+const links = [...nav.querySelectorAll("a")];
+const sections = links.map(a => document.querySelector(a.hash));
+function spy(){
+  let cur = 0;
+  sections.forEach((s, i) => { if(s.getBoundingClientRect().top < innerHeight * .4) cur = i; });
+  links.forEach((a, i) => a.classList.toggle("active", i === cur));
+}
+addEventListener("scroll", spy, { passive: true }); spy();
+</script>
+</body>
+</html>
